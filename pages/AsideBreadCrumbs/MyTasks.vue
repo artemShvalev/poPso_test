@@ -1,16 +1,5 @@
 <template>
 <div>
-  <aside>
-    <div class="logo">
-      <img src="../../assets/popso__logo__profile.svg" alt="лого__профайла">
-    </div>
-    <div class="profile__section">
-      <ul>
-        <li><NuxtLink to="/AsideBreadCrumbs/MyProfile"><img src="../../assets/icon__keys.svg" alt="иконка">Мой профиль</NuxtLink></li>
-        <li><NuxtLink to="/AsideBreadCrumbs/MyStatistics"><img src="../../assets/icon__statistics.svg" alt="иконка">Статистика</NuxtLink></li>
-      </ul>
-    </div>
-  </aside>
   <!-- Мои заачи -->
 <div class="container">
   <div class="profile__title">

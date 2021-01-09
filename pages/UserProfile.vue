@@ -11,20 +11,32 @@
         </div>
         <ul>
           <li><NuxtLink to="/AsideBreadCrumbs/MyProfile"> <img src="../assets/icon__keys.svg" alt="иконка">Мой профиль</NuxtLink> </li>
-          <li><NuxtLink to="/AsideBreadCrumbs/MyTasks"><img src="../assets/icon__tasks.svg" alt="иконка">Список Задач</NuxtLink></li>
+          <li  @click="showMyTask"><NuxtLink to="/AsideBreadCrumbs/MyTasks"><img src="../assets/icon__tasks.svg" alt="иконка">Список Задач</NuxtLink></li>
           <li><NuxtLink to="/AsideBreadCrumbs/MyStatistics"><img src="../assets/icon__statistics.svg" alt="иконка">Статистика</NuxtLink></li>
         </ul>
       </div>
     </aside>
     <MyProfile />
+    <MyTasks v-show="showMyTasks"/>
   </div>
 </template>
 
 <script>
 import MyProfile from './AsideBreadCrumbs/MyProfile'
+import MyTasks from './AsideBreadCrumbs/MyTasks'
 export default {
   name: 'UserProfile',
-  components: { MyProfile }
+  components: { MyTasks, MyProfile },
+  data () {
+    return {
+      showMyTasks: false
+    }
+  },
+  methods: {
+    showMyTask () {
+      this.showMyTask = !this.showMyTask
+    }
+  }
 }
 </script>
 
