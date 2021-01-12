@@ -48,3 +48,15 @@ img{
   left: 18px;
   top: 18px;
 }
+
+.link__profile svg{
+  fill: #BD0D22;
+}
+.link__profile svg:hover{
+  color: #BD0D22;
+  stroke: brown;
+  fill: #BD0D22;
+}
+path:hover{
+  fill:#FF2613;
+}

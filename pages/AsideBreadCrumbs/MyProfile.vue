@@ -1,21 +1,6 @@
 <template>
 <div>
-  <aside v-show="myProfile" >
-    <div class="profile__logo">
-      <img src="../../assets/popso__logo__profile.svg" alt="лого__профайла">
-    </div>
-    <div class="profile__section">
-      <div class="burger__menu">
-        <img src="../../assets/menu__icon.svg" alt="">
-        <img class="arrow" src="../../assets/arrow.png" alt="cтрелка">
-      </div>
-      <ul>
-        <li  @click="myProfil"><NuxtLink to="/AsideBreadCrumbs/MyProfile"> <img src="../../assets/icon__keys.svg" alt="иконка">Мой профиль</NuxtLink> </li>
-        <li><NuxtLink to="/AsideBreadCrumbs/MyTasks"><img src="../../assets/icon__tasks.svg" alt="иконка">Список Задач</NuxtLink></li>
-        <li><NuxtLink to="/AsideBreadCrumbs/MyStatistics"><img src="../../assets/icon__statistics.svg" alt="иконка">Статистика</NuxtLink></li>
-      </ul>
-    </div>
-  </aside>
+  <UserProfile  name="UserProfile"/>
 
   <!-- Мой профиль -->
   <div class="main__container">
@@ -53,8 +38,10 @@
 </template>
 
 <script>
+import UserProfile from '../UserProfile.vue'
 export default {
   name: 'MyProfile',
+  components: { UserProfile },
   data: () => ({
     rules: [
       value => !!value || 'Обязательно для заполнения',
@@ -64,12 +51,15 @@ export default {
       value => !!value || '#F44336',
       value => (value && value.length >= 3) || 'Минимум 3 символа', '#F44336'
     ],
-    myProfile: false
+    myProfileShow: false
   }),
   methods: {
-    myProfil () {
-      this.myProfile = this.myProfil
+    myProfile () {
+      this.myProfile = !this.myProfileShow
     }
+  },
+  mounted () {
+    this.myProfileShow = false
   }
 }
 </script>

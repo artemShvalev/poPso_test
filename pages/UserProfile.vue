@@ -10,31 +10,24 @@
           <img class="arrow" src="../assets/arrow.png" alt="cтрелка">
         </div>
         <ul>
-          <li><NuxtLink to="/AsideBreadCrumbs/MyProfile"> <img src="../assets/icon__keys.svg" alt="иконка">Мой профиль</NuxtLink> </li>
-          <li  @click="showMyTask"><NuxtLink to="/AsideBreadCrumbs/MyTasks"><img src="../assets/icon__tasks.svg" alt="иконка">Список Задач</NuxtLink></li>
-          <li><NuxtLink to="/AsideBreadCrumbs/MyStatistics"><img src="../assets/icon__statistics.svg" alt="иконка">Статистика</NuxtLink></li>
+          <li ><NuxtLink to="/AsideBreadCrumbs/MyProfile"> <img  class="link__profile" src="../assets/icon__keys.svg" alt="иконка">Мой профиль</NuxtLink> </li>
+          <li ><NuxtLink to="/AsideBreadCrumbs/MyTasks"><img  class="link__list" src="../assets/icon__tasks.svg" alt="иконка">Список Задач</NuxtLink></li>
+          <li ><NuxtLink to="/AsideBreadCrumbs/MyStatistics"><img class="link__statistics"  src="../assets/icon__statistics.svg" alt="иконка">Статистика</NuxtLink></li>
         </ul>
       </div>
     </aside>
     <MyProfile />
-    <MyTasks v-show="showMyTasks"/>
   </div>
 </template>
 
 <script>
-import MyProfile from './AsideBreadCrumbs/MyProfile'
-import MyTasks from './AsideBreadCrumbs/MyTasks'
+import MyProfile from '../pages/AsideBreadCrumbs/MyProfile'
+
 export default {
   name: 'UserProfile',
-  components: { MyTasks, MyProfile },
+  components: { MyProfile },
   data () {
     return {
-      showMyTasks: false
-    }
-  },
-  methods: {
-    showMyTask () {
-      this.showMyTask = !this.showMyTask
     }
   }
 }

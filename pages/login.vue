@@ -6,13 +6,17 @@
   </div>
   <div class="inputs__authorization">
     <v-text-field
-      label="Логин"
+      label="Email"
+      v-model="authUser.login"
+      type="email"
       outlined
       :rules="rules"
       hide-details="auto"
     ></v-text-field>
     <v-text-field
       label="Пароль"
+      v-model="authUser.password"
+      type="password"
       outlined
       :rules="rules"
       hide-details="auto"
@@ -20,18 +24,29 @@
   </div>
   </div>
   <div class="btn">
-    <NuxtLink to="/UserProfile"><button>Войти</button></NuxtLink>
+    <NuxtLink to="/AsideBreadCrumbs/MyProfile"><button>Войти</button></NuxtLink>
+  </div>
+  <div >
+    <NuxtLink to="/SignUp"  class="btn-sign-up">Зарегистрироваться?</NuxtLink>
   </div>
 </div>
 </template>
+
 <script>
+
 export default {
   data: () => ({
     rules: [
       value => !!value || 'Обязательно для заполнения',
-      value => (value && value.length >= 3) || 'Минимум 3 символа'
-    ]
-  })
+      value => (value && value.length >= 3) || 'Минимум 6 символов'
+    ],
+    authUser: {
+      email: '',
+      password: ''
+    }
+  }),
+  methods: {
+  }
 }
 </script>
 
