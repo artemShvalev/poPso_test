@@ -50,8 +50,8 @@ export default {
     async authNewUser () {
       try {
         await this.$fire.auth.createUserWithEmailAndPassword(
-          'artcom888@mail.ru',
-          'test12'
+          'foo@foo.foo',
+          'test_test'
         )
       } catch (e) {
         alert(e)

@@ -11,27 +11,31 @@
       <v-text-field
         label="Имя"
         hide-details="auto"
+        v-model.trim="saveInfoUser.name"
         color="color"
       ></v-text-field>
       <v-text-field
         label="Фамилия"
+        v-model.trim="saveInfoUser.lastName"
         hide-details="auto"
         color="#2196F3"
         :rules="rules"
       ></v-text-field>
       <v-text-field
         label="Старый пароль"
+        v-model.trim="saveInfoUser.oldPassword"
         hide-details="auto"
         color="#2196F3"
       ></v-text-field>
       <v-text-field
         label="Сменить Пароль"
+        v-model.trim="saveInfoUser.changePassword"
         hide-details="auto"
         color="#2196F3"
       ></v-text-field>
     </div>
     <div class="btn__save-ifo">
-      <button>Сохранить</button>
+      <button  @click="saveUser">Сохранить</button>
     </div>
   </div>
 </div>
@@ -45,22 +49,21 @@ export default {
   data: () => ({
     rules: [
       value => !!value || 'Обязательно для заполнения',
-      value => (value && value.length >= 3) || 'Минимум 3 символа'
+      value => (value && value.length >= 6) || 'Минимум 6 символов'
     ],
-    color: [
-      value => !!value || '#F44336',
-      value => (value && value.length >= 3) || 'Минимум 3 символа', '#F44336'
-    ],
+    saveInfoUser: {
+      name: '',
+      lastName: '',
+      oldPassword: '',
+      changePassword: ''
+    },
     myProfileShow: false
-  }),
-  methods: {
-    myProfile () {
-      this.myProfile = !this.myProfileShow
-    }
-  },
-  mounted () {
-    this.myProfileShow = false
-  }
+  })
+  // methods: {
+  //   saveUser () {
+  //     this.saveInfoUser = new {}
+  //   }
+  // }
 }
 </script>
 

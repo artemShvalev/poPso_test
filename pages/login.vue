@@ -24,7 +24,7 @@
   </div>
   </div>
   <div class="btn">
-    <NuxtLink to="/AsideBreadCrumbs/MyProfile"><button>Войти</button></NuxtLink>
+    <NuxtLink to="/AsideBreadCrumbs/MyProfile"><button @click="setLocaleStorage">Войти</button></NuxtLink>
   </div>
   <div >
     <NuxtLink to="/SignUp"  class="btn-sign-up">Зарегистрироваться?</NuxtLink>
@@ -46,6 +46,9 @@ export default {
     }
   }),
   methods: {
+    setLocaleStorage (key) {
+      this.authUser.add(localStorage.setItem(key, 'this.authUser'))
+    }
   }
 }
 </script>

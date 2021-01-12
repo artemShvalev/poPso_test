@@ -29,25 +29,21 @@
         </div>
         <div class="task__container">
           <ul>
-            <li>123123123</li>
-            <li>12312312312</li>
+            <li v-for="(task, id) in filteredItems" :key="id">
+              {{ task.title }}
+            </li>
           </ul>
         </div>
         <div class="complete">
           <h3>Статус</h3>
           <v-checkbox
+            v-for="(completed, id) in filteredItems"
+            :key="id"
             label="Выполнено"
             color="#299a0b"
             value="success"
             hide-details
-            :multiple = true
-          ></v-checkbox>
-          <v-checkbox
-            label="Выполнено"
-            color="#299a0b"
-            value="success"
-            hide-details
-            :multiple = true
+            :status="completed"
           ></v-checkbox>
         </div>
       </div>
@@ -57,10 +53,25 @@
 </template>
 
 <script>
+
 export default {
   name: 'MyTasks',
   data: () => {
     return {
+      tasks: [],
+      completed: []
+    }
+  },
+  mounted () {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(response => response.json())
+      .then((tasks) => {
+        this.tasks = tasks
+      })
+  },
+  computed: {
+    filteredItems () {
+      return this.tasks.slice(0, 7)
     }
   }
 }
