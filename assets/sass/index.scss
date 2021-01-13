@@ -85,3 +85,48 @@ button{
   line-height: 20px;
   text-align: center;
 }
+
+@media (max-width: 360px) {
+  .container{
+    max-width: 360px;
+    max-height: 640px;
+  }
+  .main__logo{
+    margin:140px 56px 4px 90px;
+    text-align: center;
+  }
+  .inputs__authorization{
+    margin: 60px 60px 400px 60px;
+  }
+  .btn {
+    width: 200px;
+    height: 45px;
+    background-color: #D6073D;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 460px;
+    left: 77px;
+  }
+  button{
+    text-align: center;
+    width: 200px;
+    height: 45px;
+  }
+  a{
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: Montserrat,sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+
+  }
+  .btn-sign-up {
+    position: absolute;
+    top: 550px;
+    left: 77px;
+  }
+}

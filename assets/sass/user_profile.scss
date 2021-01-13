@@ -60,3 +60,10 @@ img{
 path:hover{
   fill:#FF2613;
 }
+
+@media (max-width: 360px) {
+  aside{
+    background-color: #FFFFFF;
+    max-width: 250px;
+  }
+}

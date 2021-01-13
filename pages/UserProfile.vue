@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-app-bar class=".d-flex .d-sm-none" >
     <aside>
       <div class="profile__logo">
         <img src="../assets/popso__logo__profile.svg" alt="лого__профайла">
@@ -17,6 +18,7 @@
       </div>
     </aside>
     <MyProfile />
+    </v-app-bar>
   </div>
 </template>
 
@@ -28,6 +30,12 @@ export default {
   components: { MyProfile },
   data () {
     return {
+      show: false
+    }
+  },
+  methods: {
+    showBurger () {
+      this.show = !this.show
     }
   }
 }
