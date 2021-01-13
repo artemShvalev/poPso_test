@@ -24,9 +24,9 @@
     </div>
   </div>
   <div class="btn">
-    <NuxtLink to="/login"><button @click="authNewUser" >Зарегистрироваться</button></NuxtLink>
+    <NuxtLink to="/"><button @click="authNewUser" >Зарегистрироваться</button></NuxtLink>
   </div>
-  <NuxtLink to="/login"  class="btn-sign-up">Уже есть аккаунт? Войти</NuxtLink>
+  <NuxtLink to="/"  class="btn-sign-up">Уже есть аккаунт? Войти</NuxtLink>
 </div>
 </template>
 

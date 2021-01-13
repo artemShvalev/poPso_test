@@ -26,7 +26,7 @@
     <div class="graphic__container">
       <v-sparkline
         color="#2196F3"
-        :value="value"
+        :value="value.value1"
         :fill="fill"
         smooth
         auto-draw
@@ -37,10 +37,11 @@
         :type="type"
         :auto-line-width="autoLineWidth"
       ></v-sparkline>
+      <slot></slot>
       <v-sparkline
         smooth
         color="#EEBD72"
-        :value="value2"
+        :value="value.value2"
         show-labels
         :fill="fill"
         auto-draw
@@ -50,13 +51,16 @@
         :type="type"
         :auto-line-width="autoLineWidth"
       ></v-sparkline>
+      <span class="statistic__title"  v-if="this.value.value1 && this.value.value2 !== this.value.value1 && this.value.value2 ">
+        {{ message }}
+      </span>
     </div>
     <div class="btn_graph">
-      <button class="btn__values">Случайные данные</button>
-      <button class="btn__values-in">Добавить Данные</button>
-      <button class="btn__values-del">Удалить Данные</button>
-      <button class="btn__values-incr">Увеличить кол-во данных</button>
-      <button class="btn__values-min">Уменьшить кол-во данных</button>
+      <button class="btn__values" @click="randomNumbers">Случайные данные</button>
+      <button class="btn__values-in" @click="addDate(1, 10)">Добавить Данные</button>
+      <button class="btn__values-del"  @click="delDate">Удалить Данные</button>
+      <button class="btn__values-incr"  @click="addDate(1, 10)">Увеличить кол-во данных</button>
+      <button class="btn__values-min"  @click="delDate">Уменьшить кол-во данных</button>
     </div>
   </div>
 </div>
@@ -66,17 +70,40 @@
 export default {
   name: 'MyStatistics',
   data: () => ({
+    message: 'Больше графиков нет :)',
     width: 0.9,
     radius: 10,
     padding: 2,
     lineCap: 'round',
-    value: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0], // значения можно динамически менять
-    value2: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0], // значения можно динамически менять
+    value: {
+      value1: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0], // значения можно динамически менять
+      value2: [0, 2, 5, 9, 5, 10, 3, 5, 0, 0, 1, 8, 2, 9, 0] // значения можно динамически менять
+    },
     gradientDirection: 'top',
     fill: false,
     type: 'trend',
     autoLineWidth: true
-  })
+  }),
+  computed: {},
+  methods: {
+    randomNumbers () {
+      this.value.value1.sort()
+      this.value.value1.splice(0, (1 / (Math.random())))
+      this.value.value2.sort()
+      this.value.value2.splice(0, (1 / (Math.random())))
+      // if (this.value.value1 && this.value.value2 === null) {
+      //   this.message
+      // }
+    },
+    addDate (min, max) {
+      this.value.value1.push(Math.round(Math.random() * (min + max)))
+      this.value.value2.push(Math.round(Math.random() * (min + max)))
+    },
+    delDate () {
+      this.value.value1.splice(0, 2)
+      this.value.value2.splice(0, 2)
+    }
+  }
 }
 </script>
 
