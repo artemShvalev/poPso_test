@@ -51,7 +51,10 @@
         :type="type"
         :auto-line-width="autoLineWidth"
       ></v-sparkline>
-      <span class="statistic__title"  v-if="this.value.value1 && this.value.value2 !== this.value.value1 && this.value.value2 ">
+      <span
+        class="statistic__title"
+            v-if="this.value.value1 === !this.value.value2"
+      >
         {{ message }}
       </span>
     </div>

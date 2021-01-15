@@ -23,13 +23,17 @@
       ></v-text-field>
       <v-text-field
         label="Старый пароль"
+        :rules="rules"
+        type="password"
         v-model.trim="saveInfoUser.oldPassword"
         hide-details="auto"
         color="#2196F3"
       ></v-text-field>
       <v-text-field
         label="Сменить Пароль"
+        :rules="rules"
         v-model.trim="saveInfoUser.changePassword"
+        type="password"
         hide-details="auto"
         color="#2196F3"
       ></v-text-field>
@@ -42,6 +46,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import UserProfile from '../UserProfile.vue'
 export default {
   name: 'MyProfile',
@@ -58,12 +63,15 @@ export default {
       changePassword: ''
     },
     myProfileShow: false
-  })
-  // methods: {
-  //   saveUser () {
-  //     this.saveInfoUser = new {}
-  //   }
-  // }
+  }),
+  methods: {
+    saveUser () {
+      axios.post('https://popso-d8780-default-rtdb.firebaseio.com/saveInfoUser.json', this.saveInfoUser)
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
+      this.saveInfoUser = ''
+    }
+  }
 }
 </script>
 
@@ -160,6 +168,9 @@ export default {
     font-size: 16px;
     line-height: 20px;
     color: #FFFFFF;
-
+  }
+  .v-alert__content{
+    font-family: Montserrat,sans-serif;
+    padding-left: 45px;
   }
 </style>
