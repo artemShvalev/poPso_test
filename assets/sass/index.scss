@@ -1,7 +1,7 @@
 @import 'font';
 
 .container{
-  max-width: 1280px;
+  max-width: 100%;
 }
 
 .main__logo{
@@ -86,10 +86,10 @@ button{
   text-align: center;
 }
 
-@media (max-width: 360px) {
+@media (min-width: 360px) {
   .container{
-    max-width: 360px;
-    max-height: 640px;
+    width: 360px;
+    height: 640px;
   }
   .main__logo{
     margin:140px 56px 4px 90px;
@@ -106,12 +106,11 @@ button{
 
     position: absolute;
     top: 460px;
-    left: 77px;
+    left: 855px;
   }
   button{
     text-align: center;
     width: 200px;
-    height: 45px;
   }
   a{
     text-decoration: none;
@@ -127,6 +126,6 @@ button{
   .btn-sign-up {
     position: absolute;
     top: 550px;
-    left: 77px;
+    left: 855px;
   }
 }

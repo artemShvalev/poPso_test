@@ -1,14 +1,23 @@
 <template>
   <div>
-    <v-app-bar class=".d-flex .d-sm-none" >
-    <aside>
+    <v-app-bar
+      class="app__bar"
+      color="#FFFFFF"
+    >
+      <div  :class="{openMenu}"  @click="open" >
+      <img class="line line__default"  src="../assets/line.png" alt="">
+      <img class="line2 line__default" src="../assets/line.png" alt="">
+      </div>
+    </v-app-bar>
+    <div :class="{aside__none}">
+    <aside :class="{step__left}" >
       <div class="profile__logo">
-        <img src="../assets/popso__logo__profile.svg" alt="лого__профайла">
+        <img src="../assets/popso__logo__profile.svg" alt="лого__профайла" >
       </div>
       <div class="profile__section">
-        <div class="burger__menu">
+        <div class="burger__menu"  @click="showBurger">
           <img src="../assets/menu__icon.svg" alt="">
-          <img class="arrow" src="../assets/arrow.png" alt="cтрелка">
+          <img :class="{arrow}" class="arrow__default" src="../assets/arrow.png" alt="cтрелка">
         </div>
         <ul>
           <li ><NuxtLink to="/AsideBreadCrumbs/MyProfile"> <img  class="link__profile" src="../assets/icon__keys.svg" alt="иконка">Мой профиль</NuxtLink> </li>
@@ -17,8 +26,8 @@
         </ul>
       </div>
     </aside>
+    </div>
     <MyProfile />
-    </v-app-bar>
   </div>
 </template>
 
@@ -30,12 +39,21 @@ export default {
   components: { MyProfile },
   data () {
     return {
-      show: false
+      show: false,
+      step__left: false,
+      arrow: false,
+      openMenu: false,
+      aside__none: true
     }
   },
   methods: {
     showBurger () {
-      this.show = !this.show
+      this.step__left = !this.step__left
+      this.arrow = !this.arrow
+    },
+    open () {
+      this.openMenu = !this.openMenu
+      this.aside__none = !this.aside__none
     }
   }
 }
